@@ -38,6 +38,7 @@ export default function Home({}) {
           placeholder="Enter your name"
           className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
           value={name1}
+          maxLength={12}
           onChange={(e) => setName1(e.target.value)}
         />
         <input
@@ -46,6 +47,7 @@ export default function Home({}) {
           placeholder="Enter your Valentine's name"
           className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
           value={name2}
+          maxLength={12}
           onChange={(e) => setName2(e.target.value)}
         />
         <button
