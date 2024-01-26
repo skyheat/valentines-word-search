@@ -20,7 +20,7 @@ interface WordPosition {
 }
 
 const WordTable = ({ name1, name2 }: WordTableProps) => {
-  const gridSize = 15;
+  const gridSize = 11;
   const [grid, setGrid] = useState<string[][] | null>(null);
   const [isSelecting, setIsSelecting] = useState(false);
   const [startPos, setStartPos] = useState<Position>({ row: -1, col: -1 });
@@ -307,9 +307,9 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
   }
   return (
     <div className="w-5/6 md:w-1/2 text-center">
-      <h1>Wordsearch</h1>
-      <p>There are {numWords} remaining words!</p>
-      <table className="select-none border-collapse table-auto w-full bg-slate-100">
+      <h1>Word Search</h1>
+      <p>Remaining Words: {numWords}</p>
+      <table className="select-none w-full border-collapse bg-slate-100 table-fixed">
         <tbody>
           {grid.map((row, rowIndex) => (
             <tr key={rowIndex}>
@@ -335,6 +335,13 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
           ))}
         </tbody>
       </table>
+      <p>Hint: The words start with these letters:</p>
+      <ol>
+        {[name1, name2, "love"].map((word, index) => (
+          <li key={index}>{word[0].toUpperCase()}</li>
+        ))}
+      </ol>
+
       <button
         onClick={() => setShowAnswers(!showAnswers)}
         className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300"

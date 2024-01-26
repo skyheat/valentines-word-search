@@ -35,7 +35,7 @@ export default function Home({}) {
         <input
           type="text"
           id="name1"
-          placeholder="Enter your name"
+          placeholder="Enter your first name"
           className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
           value={name1}
           maxLength={12}
@@ -44,7 +44,7 @@ export default function Home({}) {
         <input
           type="text"
           id="name2"
-          placeholder="Enter your Valentine's name"
+          placeholder="Enter your Valentine's first name"
           className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
           value={name2}
           maxLength={12}
