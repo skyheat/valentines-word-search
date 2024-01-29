@@ -30,6 +30,7 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
   const [win, setWin] = useState(false);
   const [wordPos, setWordPos] = useState<WordPosition[]>([]);
   const [showAnswers, setShowAnswers] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const handleMouseDown = (rowIndex: number, cellIndex: number) => {
     setIsSelecting(true);
@@ -116,7 +117,7 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
     if (
       (word === name1.toLowerCase() ||
         word === name2.toLowerCase() ||
-        word === "loves") &&
+        word === "love") &&
       !isAlreadyFound
     ) {
       setFoundWords([...foundWords, wordPositions]);
@@ -195,7 +196,7 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
     };
 
     const placeWords = (name1: string, name2: string) => {
-      const words = [name1.toLowerCase(), name2.toLowerCase(), "loves"];
+      const words = [name1.toLowerCase(), name2.toLowerCase(), "love"];
       const directions = ["horizontal", "vertical"];
       const MAX_ATTEMPTS = 100; // Maximum attempts to place a word
       const positions: WordPosition[] = []; // To hold word positions
@@ -338,16 +339,32 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
       <p>Hint: The words start with these letters:</p>
       <ol>
         {[name1, name2, "love"].map((word, index) => (
-          <li key={index}>{word[0].toUpperCase()}</li>
+          <li
+            key={index}
+            className="flex justify-center items-center space-x-2"
+          >
+            <p>{word[0].toUpperCase()}</p>
+            {showHint &&
+              Array.from({ length: word.length - 1 }).map((_, i) => (
+                <p key={i}>_</p>
+              ))}
+          </li>
         ))}
       </ol>
-
-      <button
-        onClick={() => setShowAnswers(!showAnswers)}
-        className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300"
-      >
-        {showAnswers ? "Hide Answers" : "Show Answers"}
-      </button>
+      <div className="flex-col flex items-center">
+        <button
+          onClick={() => setShowHint(true)}
+          className="mb-4 bg-slate-500 text-white p-2 rounded hover:bg-slate-600 transition duration-300 w-1/4"
+        >
+          More Hints
+        </button>
+        <button
+          onClick={() => setShowAnswers(!showAnswers)}
+          className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300 w-1/4"
+        >
+          {showAnswers ? "Hide Answers" : "Show Answers"}
+        </button>
+      </div>
     </div>
   );
 };
