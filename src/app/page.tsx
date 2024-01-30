@@ -16,7 +16,7 @@ export default function Home({}) {
 
     if (name1 && name2) {
       const encodedNames = btoa(
-        encodeURIComponent(name1 + "_" + name2)
+        encodeURIComponent(name1 + "_" + name2 + "_be_my_valentine")
       ).replace(/=+$/, "");
       setLink("/" + encodedNames);
 

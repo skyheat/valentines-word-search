@@ -1,11 +1,10 @@
 import Link from "next/link";
 
 interface WinPageProps {
-  name1: string;
-  name2: string;
+  words: string[];
 }
 
-const WinPage = ({ name1, name2 }: WinPageProps) => {
+const WinPage = ({ words }: WinPageProps) => {
   // Array to create multiple hearts
   const hearts = Array.from({ length: 15 }); // Adjust the number of hearts as needed
 
@@ -30,7 +29,7 @@ const WinPage = ({ name1, name2 }: WinPageProps) => {
 
       <div className="z-10 relative flex flex-col items-center justify-center h-full">
         <h1 className="text-4xl md:text-6xl font-bold text-red-600 capitalize">
-          {name1} ❤️ {name2}
+          {words[0]} ❤️ {words[1]}
         </h1>
         <p className="text-xl md:text-2xl text-red-500 mt-4">
           Happy Valentine&apos;s Day!

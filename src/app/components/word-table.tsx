@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import WinPage from "./win";
 
 interface WordTableProps {
-  name1: string;
-  name2: string;
+  words: string[];
 }
 
 interface Position {
@@ -19,14 +18,14 @@ interface WordPosition {
   endPos: Position;
 }
 
-const WordTable = ({ name1, name2 }: WordTableProps) => {
+const WordTable = ({ words }: WordTableProps) => {
   const gridSize = 11;
   const [grid, setGrid] = useState<string[][] | null>(null);
   const [isSelecting, setIsSelecting] = useState(false);
   const [startPos, setStartPos] = useState<Position>({ row: -1, col: -1 });
   const [endPos, setEndPos] = useState<Position>({ row: -1, col: -1 });
   const [foundWords, setFoundWords] = useState<Position[][]>([]);
-  const [numWords, setNumWords] = useState(3);
+  const [numWords, setNumWords] = useState(5);
   const [win, setWin] = useState(false);
   const [wordPos, setWordPos] = useState<WordPosition[]>([]);
   const [showAnswers, setShowAnswers] = useState(false);
@@ -114,12 +113,7 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
       isSamePosition(foundWordPositions, wordPositions)
     );
 
-    if (
-      (word === name1.toLowerCase() ||
-        word === name2.toLowerCase() ||
-        word === "love") &&
-      !isAlreadyFound
-    ) {
+    if (words.includes(word) && !isAlreadyFound) {
       setFoundWords([...foundWords, wordPositions]);
       const updatedNumWords = numWords - 1;
       setNumWords(updatedNumWords);
@@ -130,6 +124,21 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
 
       return true;
     }
+    // if (
+    //   (word === name1.toLowerCase() ||
+    //     word === name2.toLowerCase() ||
+    //     word === "love") && !isAlreadyFound;
+    // ) {
+    //   setFoundWords([...foundWords, wordPositions]);
+    //   const updatedNumWords = numWords - 1;
+    //   setNumWords(updatedNumWords);
+
+    //   if (updatedNumWords === 0) {
+    //     setWin(true);
+    //   }
+
+    //   return true;
+    // }
 
     return false;
   };
@@ -195,8 +204,10 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
       setGrid(gridToFill);
     };
 
-    const placeWords = (name1: string, name2: string) => {
-      const words = [name1.toLowerCase(), name2.toLowerCase(), "love"];
+    //const placeWords = (name1: string, name2: string) => {
+    const placeWords = (wordsArray: string[]) => {
+      // const words = [name1.toLowerCase(), name2.toLowerCase(), "love"];
+      const words = wordsArray.map((word) => word.toLowerCase());
       const directions = ["horizontal", "vertical"];
       const MAX_ATTEMPTS = 100; // Maximum attempts to place a word
       const positions: WordPosition[] = []; // To hold word positions
@@ -295,16 +306,16 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
       positions.push({ word, startPos, endPos });
     };
 
-    placeWords(name1, name2);
+    placeWords(words);
     fillGrid(grid);
-  }, [name1, name2]); // Dependency array
+  }, [words]); // Dependency array
 
   if (!grid) {
     return <div>Loading...</div>;
   }
 
   if (win) {
-    return <WinPage name1={name1} name2={name2} />;
+    return <WinPage words={words} />;
   }
   return (
     <div className="w-5/6 md:w-1/2 text-center">
@@ -338,7 +349,7 @@ const WordTable = ({ name1, name2 }: WordTableProps) => {
       </table>
       <p>Hint: The words start with these letters:</p>
       <ol>
-        {[name1, name2, "love"].map((word, index) => (
+        {words.map((word, index) => (
           <li
             key={index}
             className="flex justify-center items-center space-x-2"
