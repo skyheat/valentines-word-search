@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import WinPage from "./win";
+import WinPage from "../WinPage/page";
 
 interface WordTableProps {
   words: string[];

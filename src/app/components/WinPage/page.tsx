@@ -7,6 +7,8 @@ interface WinPageProps {
 const WinPage = ({ words }: WinPageProps) => {
   // Array to create multiple hearts
   const hearts = Array.from({ length: 15 }); // Adjust the number of hearts as needed
+  const name1 = words[0];
+  const name2 = words[1];
 
   return (
     <div className="relative h-full w-full bg-pink-100 overflow-hidden">
@@ -29,17 +31,17 @@ const WinPage = ({ words }: WinPageProps) => {
 
       <div className="z-10 relative flex flex-col items-center justify-center h-full">
         <h1 className="text-4xl md:text-6xl font-bold text-red-600 capitalize">
-          {words[0]} ❤️ {words[1]}
+          {name1} ❤️ {name2}
         </h1>
-        <p className="text-xl md:text-2xl text-red-500 mt-4">
-          Happy Valentine&apos;s Day!
+        <p className="text-xl md:text-2xl text-red-500 mt-4 flex flex-row space-x-2">
+          Be my valentine?
         </p>
         <div className="mt-10">
           <Link
             href="/"
             className="px-6 py-3 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600 transition duration-200 ease-in-out"
           >
-            Create your Own Wordsearch
+            Create Word Search
           </Link>
         </div>
       </div>
