@@ -292,8 +292,9 @@ const WordTable = ({ words }: WordTableProps) => {
 
     placeWords(words);
     fillGrid(grid);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [words]);
+  }, [words]); // Only run this effect when the words change, not grid or alphabet as alphabet is static and grid is modified within this leading to infinite loop
 
   if (!grid) {
     return <div>Loading...</div>;
