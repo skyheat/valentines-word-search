@@ -1,9 +1,11 @@
+"use client";
+
 import { useState } from "react";
 import copy from "copy-to-clipboard";
 
-type CodeProps = {
+interface CodeProps {
   code: string;
-};
+}
 
 const Code = ({ code }: CodeProps) => {
   const [copied, setCopied] = useState(false);

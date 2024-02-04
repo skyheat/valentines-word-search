@@ -1,6 +1,6 @@
 "use client";
 
-import WordTable from "../components/WordTable/page";
+import WordTable from "../_components/WordTable/page";
 import { useEffect, useState } from "react";
 
 export default function Game({ params: { id } }: { params: { id: string } }) {

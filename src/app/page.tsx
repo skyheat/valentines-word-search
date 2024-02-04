@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Code from "./components/Code/page";
+import Code from "./_components/Code/page";
 
 export default function Home({}) {
   const [name1, setName1] = useState("");
@@ -27,7 +27,7 @@ export default function Home({}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-pink-100 p-6 text-center">
       <h1 className="text-4xl md:text-6xl font-bold text-red-600 mb-8">
-        Valentine&apos;s Wordsearch
+        Valentine&apos;s Word Search
       </h1>
       <form
         onSubmit={handleLinkGeneration}
@@ -59,7 +59,7 @@ export default function Home({}) {
         </button>
       </form>
       {displayLink && (
-        <Code code={domainLink + link} />
+        <Code code={(domainLink + link).toString()} />
         // <div className="mt-6 px-4 py-2 bg-white rounded shadow text-red-500 hover:text-red-600 transition duration-200 ease-in-out">
 
         //   <p className="mt-6 px-4 py-2 bg-white rounded shadow text-red-500 hover:text-red-600 transition duration-200 ease-in-out">

@@ -308,7 +308,7 @@ const WordTable = ({ words }: WordTableProps) => {
 
     placeWords(words);
     fillGrid(grid);
-  }, [words]); // Dependency array
+  });
 
   if (!grid) {
     return <div>Loading...</div>;
