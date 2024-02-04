@@ -19,7 +19,7 @@ interface WordPosition {
 }
 
 const WordTable = ({ words }: WordTableProps) => {
-  const gridSize = 11;
+  const gridSize = 15;
   const [grid, setGrid] = useState<string[][] | null>(null);
   const [isSelecting, setIsSelecting] = useState(false);
   const [startPos, setStartPos] = useState<Position>({ row: -1, col: -1 });
@@ -124,22 +124,6 @@ const WordTable = ({ words }: WordTableProps) => {
 
       return true;
     }
-    // if (
-    //   (word === name1.toLowerCase() ||
-    //     word === name2.toLowerCase() ||
-    //     word === "love") && !isAlreadyFound;
-    // ) {
-    //   setFoundWords([...foundWords, wordPositions]);
-    //   const updatedNumWords = numWords - 1;
-    //   setNumWords(updatedNumWords);
-
-    //   if (updatedNumWords === 0) {
-    //     setWin(true);
-    //   }
-
-    //   return true;
-    // }
-
     return false;
   };
 
@@ -206,7 +190,7 @@ const WordTable = ({ words }: WordTableProps) => {
 
     //const placeWords = (name1: string, name2: string) => {
     const placeWords = (wordsArray: string[]) => {
-      // const words = [name1.toLowerCase(), name2.toLowerCase(), "love"];
+      // const words = ["bob", "poop", "love"];
       const words = wordsArray.map((word) => word.toLowerCase());
       const directions = ["horizontal", "vertical"];
       const MAX_ATTEMPTS = 100; // Maximum attempts to place a word
@@ -232,7 +216,7 @@ const WordTable = ({ words }: WordTableProps) => {
             checkFit(row, col, word.length, direction) &&
             checkOverlap(row, col, word, direction)
           ) {
-            placeWordInGrid(word, row, col, direction, positions); // Modified to include positions
+            placeWordInGrid(word, row, col, direction, positions);
             placed = true;
           } else {
             attempts++;
@@ -308,7 +292,8 @@ const WordTable = ({ words }: WordTableProps) => {
 
     placeWords(words);
     fillGrid(grid);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [words]);
 
   if (!grid) {
     return <div>Loading...</div>;
