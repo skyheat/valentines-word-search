@@ -33,39 +33,44 @@ export default function Home({}) {
         onSubmit={handleLinkGeneration}
         className="flex flex-col items-center gap-4"
       >
-        <input
-          type="text"
-          id="name1"
-          placeholder="Enter your first name"
-          className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
-          value={name1}
-          maxLength={12}
-          onChange={(e) => setName1(e.target.value)}
-        />
-        <input
-          type="text"
-          id="name2"
-          placeholder="Enter your Valentine's first name"
-          className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none transition-colors"
-          value={name2}
-          maxLength={12}
-          onChange={(e) => setName2(e.target.value)}
-        />
+        <div className="relative">
+          <input
+            type="text"
+            id="name1"
+            placeholder="Your first name"
+            className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none pr-10 transition-colors"
+            value={name1}
+            maxLength={12}
+            onChange={(e) => setName1(e.target.value)}
+          />
+          <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
+            {name1.length}/12
+          </p>
+        </div>
+        <div className="relative">
+          <input
+            type="text"
+            id="name2"
+            placeholder="Valentine's first name"
+            className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none pr-10 transition-colors"
+            value={name2}
+            maxLength={12}
+            onChange={(e) => setName2(e.target.value)}
+          />
+          <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
+            {name2.length}/12
+          </p>
+        </div>
+
         <button
           type="submit"
-          className="px-6 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 ease-in-out"
+          className="px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200 ease-in-out"
         >
           Generate Link
         </button>
       </form>
       {displayLink && (
-        <Code code={(domainLink + link).toString()} />
-        // <div className="mt-6 px-4 py-2 bg-white rounded shadow text-red-500 hover:text-red-600 transition duration-200 ease-in-out">
-
-        //   <p className="mt-6 px-4 py-2 bg-white rounded shadow text-red-500 hover:text-red-600 transition duration-200 ease-in-out">
-        //     {domainLink + link}
-        //   </p>
-        // </div>
+        <Code code={(domainLink + link).toString()} link={link} />
       )}
     </main>
   );

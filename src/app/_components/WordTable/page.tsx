@@ -333,7 +333,7 @@ const WordTable = ({ words }: WordTableProps) => {
           ))}
         </tbody>
       </table>
-      <p>Hint: The words start with these letters:</p>
+      <p>The words start with these letters:</p>
       <ol>
         {words.map((word, index) => (
           <li
@@ -348,7 +348,7 @@ const WordTable = ({ words }: WordTableProps) => {
           </li>
         ))}
       </ol>
-      <div className="flex-col flex items-center">
+      <div className="flex-col flex items-center pt-4">
         <button
           onClick={() => setShowHint(true)}
           className="mb-4 bg-slate-500 text-white p-2 rounded hover:bg-slate-600 transition duration-300 w-1/4"
