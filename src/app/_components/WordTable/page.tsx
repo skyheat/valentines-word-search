@@ -25,6 +25,7 @@ const WordTable = ({ words }: WordTableProps) => {
   const [startPos, setStartPos] = useState<Position>({ row: -1, col: -1 });
   const [endPos, setEndPos] = useState<Position>({ row: -1, col: -1 });
   const [foundWords, setFoundWords] = useState<Position[][]>([]);
+  const [solvedWords, setSolvedWords] = useState<string[]>([]);
   const [numWords, setNumWords] = useState(5);
   const [win, setWin] = useState(false);
   const [wordPos, setWordPos] = useState<WordPosition[]>([]);
@@ -116,6 +117,7 @@ const WordTable = ({ words }: WordTableProps) => {
 
     if (words.includes(word) && !isAlreadyFound) {
       setFoundWords([...foundWords, wordPositions]);
+      setSolvedWords([...solvedWords, word]);
       const updatedNumWords = numWords - 1;
       setNumWords(updatedNumWords);
 
@@ -306,7 +308,8 @@ const WordTable = ({ words }: WordTableProps) => {
   }
   return (
     <div className="w-full px-3 md:w-1/2 text-center">
-      <h1>Word Search</h1>
+      <h1>Horizontal & Vertical Word Search</h1>
+      <p></p>
       <p>Remaining Words: {numWords}</p>
       <table className="select-none w-full border-collapse bg-slate-100 table-fixed touch-none">
         <tbody>
@@ -341,11 +344,17 @@ const WordTable = ({ words }: WordTableProps) => {
             key={index}
             className="flex justify-center items-center space-x-2"
           >
-            <p>{word[0].toUpperCase()}</p>
-            {showHint &&
-              Array.from({ length: word.length - 1 }).map((_, i) => (
-                <p key={i}>_</p>
-              ))}
+            {solvedWords.includes(word) ? (
+              <p className="capitalize line-through">{word}</p>
+            ) : (
+              <>
+                <p>{word[0].toUpperCase()}</p>
+                {showHint &&
+                  Array.from({ length: word.length - 1 }).map((_, i) => (
+                    <p key={i}>_</p>
+                  ))}
+              </>
+            )}
           </li>
         ))}
       </ol>
