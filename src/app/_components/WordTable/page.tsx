@@ -305,7 +305,7 @@ const WordTable = ({ words }: WordTableProps) => {
     return <WinPage words={words} />;
   }
   return (
-    <div className="w-5/6 md:w-1/2 text-center">
+    <div className="w-5/6 md:w-1/2 text-center overflow-hidden">
       <h1>Word Search</h1>
       <p>Remaining Words: {numWords}</p>
       <table className="select-none w-full border-collapse bg-slate-100 table-fixed">
@@ -352,13 +352,13 @@ const WordTable = ({ words }: WordTableProps) => {
       <div className="flex-col flex items-center pt-4">
         <button
           onClick={() => setShowHint(true)}
-          className="mb-4 bg-slate-500 text-white p-2 rounded hover:bg-slate-600 transition duration-300 w-1/4"
+          className="mb-4 bg-slate-500 text-white p-2 rounded hover:bg-slate-600 transition duration-300 w-1/2 md:w-1/4"
         >
           More Hints
         </button>
         <button
           onClick={() => setShowAnswers(!showAnswers)}
-          className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300 w-1/4"
+          className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300 md:w-1/4 w-1/2"
         >
           {showAnswers ? "Hide Answers" : "Show Answers"}
         </button>
