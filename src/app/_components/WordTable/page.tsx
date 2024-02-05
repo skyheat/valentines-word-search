@@ -305,10 +305,10 @@ const WordTable = ({ words }: WordTableProps) => {
     return <WinPage words={words} />;
   }
   return (
-    <div className="w-5/6 md:w-1/2 text-center overflow-hidden">
+    <div className="w-5/6 md:w-1/2 text-center">
       <h1>Word Search</h1>
       <p>Remaining Words: {numWords}</p>
-      <table className="select-none w-full border-collapse bg-slate-100 table-fixed">
+      <table className="select-none w-full border-collapse bg-slate-100 table-fixed touch-none">
         <tbody>
           {grid.map((row, rowIndex) => (
             <tr key={rowIndex}>
