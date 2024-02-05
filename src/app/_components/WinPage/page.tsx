@@ -11,7 +11,7 @@ const WinPage = ({ words }: WinPageProps) => {
   const name2 = words[1];
 
   return (
-    <div className="relative h-full w-full bg-pink-100 overflow-hidden">
+    <div className="relative h-full w-full from-pink-400 overflow-hidden bg-gradient-to-t">
       {hearts.map((_, index) => (
         <div
           key={index}

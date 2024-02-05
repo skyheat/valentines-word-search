@@ -36,7 +36,7 @@ const Code = ({ code, link }: CodeProps) => {
       {showCopyKey && (
         <button
           type="button"
-          className="bg-black text-white absolute right-2 top-1 rounded mt-2 px-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+          className="bg-black text-white absolute right-2 top-1 rounded px-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           onClick={() => {
             copyCode(code);
           }}
