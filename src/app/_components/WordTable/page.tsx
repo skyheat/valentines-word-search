@@ -19,7 +19,7 @@ interface WordPosition {
 }
 
 const WordTable = ({ words }: WordTableProps) => {
-  const gridSize = 15;
+  const gridSize = 12;
   const [grid, setGrid] = useState<string[][] | null>(null);
   const [isSelecting, setIsSelecting] = useState(false);
   const [startPos, setStartPos] = useState<Position>({ row: -1, col: -1 });
@@ -305,7 +305,7 @@ const WordTable = ({ words }: WordTableProps) => {
     return <WinPage words={words} />;
   }
   return (
-    <div className="w-5/6 md:w-1/2 text-center">
+    <div className="w-full px-3 md:w-1/2 text-center">
       <h1>Word Search</h1>
       <p>Remaining Words: {numWords}</p>
       <table className="select-none w-full border-collapse bg-slate-100 table-fixed touch-none">

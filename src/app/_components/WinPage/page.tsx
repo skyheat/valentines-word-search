@@ -1,34 +1,18 @@
 import Link from "next/link";
+import LoveHearts from "../LoveHearts/page";
+import Footer from "../Footer/page";
 
 interface WinPageProps {
   words: string[];
 }
 
 const WinPage = ({ words }: WinPageProps) => {
-  // Array to create multiple hearts
-  const hearts = Array.from({ length: 20 });
   const name1 = words[0];
   const name2 = words[1];
 
   return (
     <div className="relative h-full w-full from-pink-400 overflow-hidden bg-gradient-to-t">
-      {hearts.map((_, index) => (
-        <div
-          key={index}
-          className="absolute text-red-500 opacity-0"
-          style={{
-            animation: `floatUp ${5 + (index % 5)}s linear ${
-              index * 0.5
-            }s infinite`,
-            animationFillMode: "forwards",
-            left: `${10 + ((index * 10) % 90)}%`,
-            fontSize: `${Math.random() * (2 - 1) + 1}rem`,
-          }}
-        >
-          ❤️
-        </div>
-      ))}
-
+      <LoveHearts />
       <div className="z-10 relative flex flex-col items-center justify-center h-full">
         <h1 className="text-4xl md:text-6xl font-bold text-red-600 capitalize">
           {name1} ❤️ {name2}
@@ -44,6 +28,7 @@ const WinPage = ({ words }: WinPageProps) => {
             Create Word Search
           </Link>
         </div>
+        <Footer />
       </div>
     </div>
   );
