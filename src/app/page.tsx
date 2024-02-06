@@ -44,7 +44,7 @@ export default function Home({}) {
     <main className="relative h-full w-full from-pink-400 overflow-hidden bg-gradient-to-t">
       <div className="flex min-h-screen flex-col items-center justify-center p-6 text-center overflow-hidden">
         <LoveHearts />
-        <h1 className="text-6xl md:text-8xl text-red-600 mb-8 font-lovelight">
+        <h1 className="text-6xl md:text-8xl text-red-500 mb-8 font-semibold font-lovelight">
           Valentine&apos;s Word Search
         </h1>
         <form
