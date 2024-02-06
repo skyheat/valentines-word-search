@@ -4,7 +4,10 @@ const Footer = () => {
   return (
     <footer className="flex flex-col pb-4">
       <div className="flex justify-center mt-10">
-        <Link className="hover:underline" href="https://github.com/skyheat">
+        <Link
+          className="hover:underline"
+          href="https://github.com/skyheat/valentines-word-search"
+        >
           GitHub
         </Link>
         <span className="mx-2">·</span>
