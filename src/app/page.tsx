@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Code from "./_components/Code/page";
 import Footer from "./_components/Footer/page";
@@ -15,6 +15,16 @@ export default function Home({}) {
   const nameMaxLength = 10;
 
   const domainLink = process.env.NEXT_PUBLIC_DOMAIN;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^a-zA-Z]/g, "");
+
+    if (e.target.id === "name1") {
+      setName1(value);
+    } else if (e.target.id === "name2") {
+      setName2(value);
+    }
+  };
 
   const handleLinkGeneration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,7 +61,7 @@ export default function Home({}) {
               maxLength={nameMaxLength}
               minLength={2}
               required
-              onChange={(e) => setName1(e.target.value)}
+              onChange={handleInputChange}
             />
             <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
               {name1.length}/{nameMaxLength}
@@ -67,7 +77,7 @@ export default function Home({}) {
               maxLength={nameMaxLength}
               minLength={2}
               required
-              onChange={(e) => setName2(e.target.value)}
+              onChange={handleInputChange}
             />
             <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
               {name2.length}/{nameMaxLength}
