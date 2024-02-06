@@ -1,5 +1,9 @@
-const LoveHearts = () => {
-  const hearts = Array.from({ length: 20 });
+interface LoveHeartsProps {
+  numHearts?: number;
+}
+
+const LoveHearts = ({ numHearts = 15 }: LoveHeartsProps) => {
+  const hearts = Array.from({ length: numHearts });
 
   return (
     <>

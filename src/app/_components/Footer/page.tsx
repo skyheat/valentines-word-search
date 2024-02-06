@@ -2,8 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center pb-4">
-      {/* <Image src="/icon/line.svg" width="125" height="54" /> */}
+    <footer className="flex flex-col pb-4">
       <div className="flex justify-center mt-10">
         <Link className="hover:underline" href="https://github.com/skyheat">
           GitHub

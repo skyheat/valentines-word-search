@@ -13,11 +13,11 @@ const WinPage = ({ words }: WinPageProps) => {
   return (
     <div className="relative h-full w-full from-pink-400 overflow-hidden bg-gradient-to-t">
       <LoveHearts />
-      <div className="z-10 relative flex flex-col items-center justify-center h-full">
-        <h1 className="text-4xl md:text-6xl font-bold text-red-600 capitalize">
+      <div className="z-10 relative flex flex-col items-center justify-center h-full text-center">
+        <h1 className="text-8xl text-red-600 capitalize font-loversquarrel">
           {name1} ❤️ {name2}
         </h1>
-        <p className="text-xl md:text-4xl text-red-500 mt-4">
+        <p className="text-6xl text-red-500 mt-4 font-lovelight">
           Be My Valentine?
         </p>
         <div className="mt-10">

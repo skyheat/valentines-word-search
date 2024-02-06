@@ -7,6 +7,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      lovelight: ["Love-Light", "regular"],
+      pangolin: ["Pangolin", "regular"],
+      loversquarrel: ["LoversQuarrel", "regular"],
+      protestrevolution: ["ProtestRevolution", "regular"],
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
