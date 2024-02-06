@@ -26,7 +26,7 @@ const WordTable = ({ words }: WordTableProps) => {
   const [endPos, setEndPos] = useState<Position>({ row: -1, col: -1 });
   const [foundWords, setFoundWords] = useState<Position[][]>([]);
   const [solvedWords, setSolvedWords] = useState<string[]>([]);
-  const [numWords, setNumWords] = useState(5);
+  const [numWords, setNumWords] = useState(words.length);
   const [win, setWin] = useState(false);
   const [wordPos, setWordPos] = useState<WordPosition[]>([]);
   const [showAnswers, setShowAnswers] = useState(false);
@@ -103,6 +103,7 @@ const WordTable = ({ words }: WordTableProps) => {
   };
 
   const checkWord = (word: string, wordPositions: Position[]) => {
+    console.log(word, wordPositions);
     const isSamePosition = (position1: Position[], position2: Position[]) => {
       if (position1.length !== position2.length) return false;
       return position1.every(
@@ -191,15 +192,13 @@ const WordTable = ({ words }: WordTableProps) => {
       setGrid(gridToFill);
     };
 
-    //const placeWords = (name1: string, name2: string) => {
     const placeWords = (wordsArray: string[]) => {
-      // const words = ["bob", "poop", "love"];
-      const words = wordsArray.map((word) => word.toLowerCase());
       const directions = ["horizontal", "vertical"];
       const MAX_ATTEMPTS = 100; // Maximum attempts to place a word
       const positions: WordPosition[] = []; // To hold word positions
+      setNumWords(wordsArray.length);
 
-      words.forEach((word) => {
+      wordsArray.forEach((word) => {
         let placed = false;
         let attempts = 0;
 

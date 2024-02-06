@@ -21,7 +21,9 @@ export default function Home({}) {
 
     if (name1 && name2) {
       const encodedNames = btoa(
-        encodeURIComponent(name1 + "_" + name2 + "_be_my_valentine")
+        encodeURIComponent(
+          name1.toLowerCase() + "_" + name2.toLowerCase() + "_love_valentine"
+        )
       ).replace(/=+$/, "");
       setLink("/" + encodedNames);
 
@@ -47,6 +49,8 @@ export default function Home({}) {
               className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none pr-10 transition-colors shadow-lg"
               value={name1}
               maxLength={nameMaxLength}
+              minLength={2}
+              required
               onChange={(e) => setName1(e.target.value)}
             />
             <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
@@ -61,6 +65,8 @@ export default function Home({}) {
               className="text-lg p-2 rounded border-2 border-red-300 focus:border-red-500 focus:outline-none pr-10 transition-colors shadow-lg"
               value={name2}
               maxLength={nameMaxLength}
+              minLength={2}
+              required
               onChange={(e) => setName2(e.target.value)}
             />
             <p className="text-sm text-gray-600 absolute inset-y-3 right-0 pr-2">
