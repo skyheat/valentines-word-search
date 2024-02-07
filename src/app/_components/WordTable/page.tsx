@@ -85,7 +85,6 @@ const WordTable = ({ words }: WordTableProps) => {
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLTableCellElement>) => {
-    event.preventDefault();
     if (isSelecting && event.touches.length > 0) {
       const touch = event.touches[0];
       const target = document.elementFromPoint(
