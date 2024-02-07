@@ -307,9 +307,8 @@ const WordTable = ({ words }: WordTableProps) => {
   }
   return (
     <div className="w-full px-3 md:w-1/2 text-center">
-      <h1>Horizontal & Vertical Word Search</h1>
-      <p></p>
-      <p>Remaining Words: {numWords}</p>
+      <h1 className="text-lg font-bold">Horizontal & Vertical Word Search</h1>
+      <p>Tap and Drag to highlight words</p>
       <table className="select-none w-full border-collapse bg-slate-100 table-fixed touch-none">
         <tbody>
           {grid.map((row, rowIndex) => (
@@ -364,6 +363,7 @@ const WordTable = ({ words }: WordTableProps) => {
         >
           More Hints
         </button>
+        {showAnswers && <p>Highlight all answers to continue!</p>}
         <button
           onClick={() => setShowAnswers(!showAnswers)}
           className="mb-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-300 md:w-1/4 w-1/2"
